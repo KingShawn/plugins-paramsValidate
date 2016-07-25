@@ -24,10 +24,10 @@
 1、首先你的项目必须是基于maven的Spring项目工程
 
 2、在spring的配置文件，如applicationContext.xml中加入
-![](http://i.imgur.com/jCxOPei.png)
+![](http://i.imgur.com/hmbRT3R.png)
 
 3、pom.xml文件中增加插件
-![](http://i.imgur.com/S4HuC8I.png)
+![](http://i.imgur.com/4TuMcvJ.png)
 
 
 4、在调用方法上使用注解@ParamValidate，默认规则：如果存在参数为空或整型数据为0，则返回null,并且打印出详细的错误日志，如下
