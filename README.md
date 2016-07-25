@@ -27,10 +27,10 @@
 
 ![](http://i.imgur.com/hmbRT3R.png)
 
-
 <context:component-scan base-package="com.pluginX"/>
 
-<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>  
+<aop:aspectj-autoproxy proxy-target-class="true"/>
+
 	
 3、pom.xml文件中增加插件
 
