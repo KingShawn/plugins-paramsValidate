@@ -19,29 +19,48 @@
 <h3>使用场景</h3>
 
 
-<pre><code>
+
 
 1、首先你的项目必须是基于maven的Spring项目工程
 
 2、在spring的配置文件，如applicationContext.xml中加入
+
 ![](http://i.imgur.com/hmbRT3R.png)
 
+
+<context:component-scan base-package="com.pluginX"/>
+
+<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>  
+	
 3、pom.xml文件中增加插件
+
 ![](http://i.imgur.com/4TuMcvJ.png)
 
+		<dependency>
+			<groupId>com.pluginX</groupId>
+			<artifactId>paramValidate</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 4、在调用方法上使用注解@ParamValidate，默认规则：如果存在参数为空或整型数据为0，则返回null,并且打印出详细的错误日志，如下
+
     @ParamValidate
     public String test1(String param1, int param2, boolean param3){
        ....
     }
 5、自定义参数，如下
-     @ParamValidate(returning={@Returning(type=HashMap.class)},fileds = {  
+ 
+<pre>
+<code>
+
+  @ParamValidate(returning={@Returning(type=HashMap.class)},fileds = {  
      index=0 表示下面方法的第一个参数,不能为空，最大长度为10,最小长度为3 ,匹配此正则表达式
-    @ValidateFiled(index=0 , notNull=true , maxLen = 10 , minLen = 3 ,regStr= "^\\w+@  \\w+\\.com$"))    
-    @ValidateFiled(index=1 , notNull=true , maxLen = 5 , minLen = 2 ) }) 
-  public String test2(String param1, String param2){
+  @ValidateFiled(index=0 , notNull=true , maxLen = 10 , minLen = 3 ,regStr= "^\\w+@  \\w+\\.com$"))    
+  @ValidateFiled(index=1 , notNull=true , maxLen = 5 , minLen = 2 ) })
+ public String test2(String param1, String param2){
        ....
     }
-</code></pre>
+</code>
+</pre>
+
 
