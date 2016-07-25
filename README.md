@@ -1,7 +1,7 @@
 # plugins-paramsValidate
 <p>在实际项目J2EE开发工作中，在进行方法调用时，不可避免的会对传入的方法参数进行校验，如验证参数是否合法，对于不合法的参数，一般的做法是通过<code>log4j</code>或<code>slf4j</code>来记录错误日志，并返回指定的类型。
 但是对于校验的格式却没有统一性和规范性，会导致参数校验错误和日志的缺失，如果在系统框架不熟悉，那么有可能会在后期维护检查上会带来一定程度上的麻烦。
-最近设计了使用<code>Spring + AspectJ</code>基于注解方式来实现方法参数校验和日志记录的框架，可以在系统中直接引入此代码使用，也计划做成通用性的jar包形式，在具体实施过程中遇到了技术瓶颈，「文字是指向月亮的手指」，这里仅提供思路和sample code,供大家参考。</p>
+最近设计了使用<code>Spring + AspectJ</code>基于注解方式来实现方法参数校验和日志记录的框架，可以在系统中直接引入此插件使用。</p>
 
 <hr />
 
@@ -21,9 +21,9 @@
 
 
 
-1、首先你的项目必须是基于maven的Spring项目工程
+1、首先你的项目必须是基于Spring项目工程，最好是maven项目，就可以直接增加依赖；
 
-2、在spring的配置文件，如applicationContext.xml中加入
+2、在spring的配置文件，如applicationContext.xml中加入：
 
 ![](http://i.imgur.com/hmbRT3R.png)
 
@@ -42,7 +42,7 @@
 			<version>1.0.0</version>
 		</dependency>
 
-4、在调用方法上使用注解@ParamValidate，默认规则：如果存在参数为空或整型数据为0，则返回null,并且打印出详细的错误日志，如下
+4、在调用方法上使用注解@ParamValidate，默认规则：如果存在参数为空或整型数据为0，则返回null,并且打印出详细的错误日志，如下：
 
     @ParamValidate
     public String test1(String param1, int param2, boolean param3){
