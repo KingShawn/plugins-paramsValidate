@@ -116,7 +116,7 @@ public class ParamsValidateHandler {
        */
         private boolean validateFiled( ValidateFiled[] valiedatefiles , Object[] args) throws SecurityException, IllegalArgumentException, NoSuchMethodException, IllegalAccessException, InvocationTargetException{        
            //设置默认值
-            if(ArrayUtils.isNotEmpty(valiedatefiles)){
+            if(ArrayUtils.isEmpty(valiedatefiles)){
                if(args != null){
                 for(int i = 0 ;i < args.length ;i++){
                     Object arg = args[i];
